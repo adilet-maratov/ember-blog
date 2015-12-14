@@ -1,6 +1,6 @@
-
 {{#each model as |blog|}}
-  <p>{{blog.name}}</p>
+  <h3>{{#link-to blogs.blog}}{{blog.name}}{{/link-to}} <small>by {{blog.author}}</small></h3>
+  <p>{{blog.description}}</p>
 {{/each}}
 
 {{outlet}}
