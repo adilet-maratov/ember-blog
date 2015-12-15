@@ -1,81 +1,38 @@
 export default function() {
 
-  var posts = [
-    {
-      type: 'post',
-      id: 1,
-      attributes: {
-        title: "Bear",
-        body: "A post about bears goes here",
-        date: new Date(2015, 11, 11, 0, 0, 0),
-        blog: 1
-      }
-    },
-    {
-      type: 'post',
-      id: 2,
-      attributes: {
-        title: "Monkey",
-        body: "A post about monkeys goes here",
-        date: new Date(2015, 11, 11, 0, 0, 0),
-        blog: 1
-      }
-    },
-    {
-      type: 'post',
-      id: 3,
-      attributes: {
-        title: "Lion",
-        body: "A post about lions goes here",
-        date: new Date(2015, 11, 11, 0, 0, 0),
-        blog: 2
-      }
-    },
-    {
-      type: 'post',
-      id: 4,
-      attributes: {
-        title: "Cat",
-        body: "A post about cats goes here",
-        date: new Date(2015, 11, 11, 0, 0, 0),
-        blog: 2
-      }
-    }
-  ];
-
-  this.get('/blogs', function(db, request) {
+  this.get('/posts', function(db, request) {
     return {
-      data: db.blogs.map(attrs => (
-        {type: 'blog', id: attrs.id, attributes: attrs}
+      data: db.posts.map(attrs => (
+        {type: 'post', id: attrs.id, attributes: attrs}
       ))
     }
   });
 
-  this.post('/blogs', function(db, request) {
+  this.post('/posts', function(db, request) {
     var attr = JSON.parse(request.requestBody);
-    var blog = db.blogs.insert(attr);
+    var post = db.posts.insert(attr);
     return {
       data: {
-        type: 'blog',
-        id: blog.id,
-        attributes: blog
+        type: 'post',
+        id: post.id,
+        attributes: post
       }
     }
   });
 
-  this.get('/blogs/:id', function(db, request) {
-    var blogID = +request.params.id;
+  this.get('/posts/:id', function(db, request) {
+    var postID = +request.params.id;
 
     return {
       data: {
-        type: 'blog',
-        id: blogID,
-        attributes: db.blogs.find(blogID)
+        type: 'post',
+        id: postID,
+        attributes: db.posts.find(postID)
       }
     }
   });
 
-  this.del('/blogs/:id');
+  this.del('/posts/:id');
 
 
   // These comments are here to help you get started. Feel free to delete them.

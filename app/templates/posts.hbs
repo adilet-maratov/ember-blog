@@ -1,1 +1,17 @@
-{{outlet}}
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form form-group">
+      <form {{action 'createPost' on='submit'}} class="form-group">
+        {{post-form}}
+      </form>
+    </div>
+
+    <h2>All posts</h2>
+    {{#each model as |post|}}
+      {{post-list post=post}}
+    {{/each}}
+  </div>
+  <div class="col-sm-8">
+    {{outlet}}
+  </div>
+</div>

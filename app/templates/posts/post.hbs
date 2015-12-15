@@ -1,0 +1,7 @@
+<h2>Post options</h2>
+
+<div class="form form-group">
+  <form {{action 'editPost' on='submit'}} class="form-group">
+    {{post-form title=model.title body=model.body date=model.date}}
+  </form>
+</div>
