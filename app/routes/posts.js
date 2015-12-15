@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    createPost: function() {
+    createPost() {
       var controller = this.get('controller');
 
       var title = controller.get('title');
@@ -26,11 +26,7 @@ export default Ember.Route.extend({
       controller.set('date');
     },
 
-    editPost: function(post) {
-      post.save();
-    },
-
-    deletePost: function(post) {
+    deletePost(post) {
       post.destroyRecord();
     }
 
