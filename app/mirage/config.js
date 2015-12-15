@@ -58,10 +58,24 @@ export default function() {
       data: {
         type: 'blog',
         id: blog.id,
-        attributtes: blog
+        attributes: blog
       }
     }
   });
+
+  this.get('/blogs/:id', function(db, request) {
+    var blogID = +request.params.id;
+
+    return {
+      data: {
+        type: 'blog',
+        id: blogID,
+        attributes: db.blogs.find(blogID)
+      }
+    }
+  });
+
+  this.del('/blogs/:id');
 
 
   // These comments are here to help you get started. Feel free to delete them.
