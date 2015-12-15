@@ -1,6 +1,7 @@
 export default function() {
 
   this.get('/posts', function(db, request) {
+
     return {
       data: db.posts.map(attrs => (
         {type: 'post', id: attrs.id, attributes: attrs}
